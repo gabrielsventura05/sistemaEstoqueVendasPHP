@@ -1,0 +1,80 @@
+*{
+	padding: 0px;
+	margin:  0px;
+	font-family: arial;
+}
+
+label, input{
+
+	display: block;
+	line-height: 30px;
+	height: 30px;
+	outline: none;
+	font-size: 15pt;
+}
+
+form{
+
+	width: 330px;/*esse valor corresponde a area que será preenchida com o background*/
+	background-color: rgba(0, 0, 0, .2);/*tonalidade do background*/
+	padding: 20px;/*area de preenchimento da section do formulario*/
+	margin: 30px auto;/*alinhamento do form dentro da secao margin de cima, baixo e lateais, auto para centro*/		
+
+}
+
+input[type="submit"]{
+
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+.esquerda{
+
+	width: 35%;/*porcentagem que a secao esquerda está ocupando na tela*/
+	float: left;
+	height: 500px;
+
+}
+
+.direita{
+
+	width: 65%;/*porcentagem que a secao esquerda está ocupando na tela*/
+	float: left;
+	height: 500px;
+
+}
+
+table{
+
+	background-color: rgba(0 , 0, 0, .2);
+	width: 90%;
+	margin: 30px auto;
+}
+
+tr{
+	line-height: 30px;
+
+}
+
+
+
+tr#titulo{
+
+	font-weight: bold;
+	background-color: rgba(0 , 0, 0, .6);
+	color: white;
+}
+
+td{
+	padding: 0px 5px;
+}
+
+a{/*links*/
+
+	background-color: white;
+	color: black;
+	padding: 5px;
+	margin: 0px 5px;
+	text-decoration: none;
+
+}
