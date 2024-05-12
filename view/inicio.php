@@ -6,20 +6,22 @@ require_once "../classes/conexao.php";
 session_start();
 
  if(isset($_SESSION['usuario'])) {
-	/*$sessao = $_SESSION['usuario'];//pega a variavel que esta em session, que nesse caso e o 
+	$sessao = $_SESSION['usuario'];//pega a variavel que esta em session, que nesse caso e o 
 	//email do usuario
 
 $c= new conectar();
 	$conexao=$c->conexao();
 
-	$sql="SELECT id,
+	$sql2="SELECT id,
 					nome,
 					user,
 					email
 			from usuarios where email ='$sessao'";//seleciona o usuario em que o email for igual
 			//ao que esta na sesssao
-	$result=mysqli_query($conexao, $sql);
-	*/
+	$resultado=mysqli_query($conexao, $sql2);
+
+	
+	
 
 	?>
 
@@ -32,9 +34,17 @@ $c= new conectar();
 	<?php require_once "menu.php"; ?>
 	
 </head>
+
 <body>
 
-	<h1>BEM VINDO</h1>
+<?php if($mostrar = mysqli_fetch_row($resultado)): ?>
+
+           
+	<h1>BEM VINDO <?php echo $mostrar[1];?> </h1><br>
+	<p>Você está logado como <?php echo $mostrar[2];?></p>
+	<?php endif; ?>
+	</h1>
+	
 	
 </body>
 </html>

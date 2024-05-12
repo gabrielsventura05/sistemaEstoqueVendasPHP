@@ -17,6 +17,7 @@ $dados = array(
 	$_POST['email'],
 	$senha
 
+
 );
 //está acessando a funcao da classe usuario passando o array dados como paramtero
 echo $obj->registrarUsuario($dados);

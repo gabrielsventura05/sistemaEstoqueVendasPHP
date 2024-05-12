@@ -8,6 +8,8 @@ require_once "../../classes/usuarios.php";
 $obj = new usuarios();
 
 //colocar as informação dentro de um array fica mais organizado
+
+
 $dados = array(
 
 	$_POST['email'],

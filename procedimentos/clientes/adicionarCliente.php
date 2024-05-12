@@ -21,7 +21,7 @@ $dados = array(
 
 );
 
-echo $obj->adicionarCliente($dados);
+echo $obj->registrarCliente($dados);
 
 ?>
 

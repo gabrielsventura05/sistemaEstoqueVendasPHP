@@ -8,7 +8,7 @@ $id=$_GET['idvenda'];
 
 
 
- $html=file_get_contents("http://localhost:8080/sistema_php7_OO/view/vendas/comprovanteVendaPdf.php?idvenda=".$id);
+ $html=file_get_contents("http://localhost:8080/sistemaEstoqueVendas_php_oo/view/vendas/comprovanteVendaPdf.php?idvenda=".$id);
 
 
  
@@ -25,7 +25,7 @@ $pdf->load_html(utf8_decode($html));
 $pdf->render();
  
 // Enviamos pdf para navegador.
-$pdf->stream('comprovante.pdf');
+$pdf->stream('comprovanteVenda.pdf');
 
 
 

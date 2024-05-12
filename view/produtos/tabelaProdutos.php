@@ -15,7 +15,8 @@
 		  inner join imagens as img
 		  on pro.id_imagem=img.id_imagem
 		  inner join categorias as cat
-		  on pro.id_categoria=cat.id_categoria";
+		  on pro.id_categoria=cat.id_categoria
+		  ";
 	$result=mysqli_query($conexao,$sql);
 
 
@@ -41,9 +42,9 @@
 	<?php while($mostrar=mysqli_fetch_row($result)): ?>
 
 	<tr>
-		<td><?php echo $mostrar[0]; ?></td>
+		<td><span style="color: blue; font-size: 30px;"><?php echo $mostrar[0]; ?></span></td>
 		<td><?php echo $mostrar[1]; ?></td>
-		<td><?php echo $mostrar[2]; ?></td>
+		<td ><?php echo $mostrar[2]; ?></td>
 		<td>R$ <?php echo $mostrar[3]; ?>,00</td>
 		<td>
 

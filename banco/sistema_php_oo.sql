@@ -38,7 +38,7 @@ CREATE TABLE `categorias` (
 -- Extraindo dados da tabela `categorias`
 --
 
-INSERT INTO `categorias` (`id_categoria`, `id_usuario`, `nome_categoria`, `dataCadastro`) VALUES
+INSERT INTO categorias (id_categoria, id_usuario, nome_categoria, dataCadastro) VALUES
 (9, 9, 'roupas', '2022-10-11'),
 (10, 9, 'eletonicos', '2022-10-11'),
 (11, 9, 'filmes', '2022-10-11');
@@ -49,15 +49,15 @@ INSERT INTO `categorias` (`id_categoria`, `id_usuario`, `nome_categoria`, `dataC
 -- Estrutura da tabela `clientes`
 --
 
-CREATE TABLE `clientes` (
-  `id_cliente` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL,
-  `nome` varchar(100) NOT NULL,
-  `sobrenome` varchar(100) NOT NULL,
-  `endereco` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `telefone` varchar(100) NOT NULL,
-  `cpf` varchar(100) NOT NULL
+CREATE TABLE clientes (
+  id_cliente int(11) NOT NULL,
+  id_usuario int(11) NOT NULL,
+  nome varchar(100) NOT NULL,
+  sobrenome varchar(100) NOT NULL,
+  endereco varchar(100) NOT NULL,
+  email varchar(100) NOT NULL,
+  telefone varchar(100) NOT NULL,
+  cpf varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

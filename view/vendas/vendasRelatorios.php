@@ -2,16 +2,34 @@
 
 	require_once "../../classes/conexao.php";
 	require_once "../../classes/vendas.php";
+
+session_start();
+		
+	if(isset($_SESSION['iduser'])){
+
+		
+		$session = $_SESSION['iduser'];
+
+		$secao = intval($session);
+		var_dump($session);
+	
 	$c= new conectar();
 	$conexao=$c->conexao();
 
 	$obj= new vendas();
 
 	$sql="SELECT id_venda,
+	id_usuario,
 				dataCompra,
 				id_cliente 
-			from vendas group by id_venda";
+			from vendas 
+			where id_usuario ='$secao'
+			group by id_venda
+			";
+			}
 	$result=mysqli_query($conexao,$sql); 
+
+
 	?>
 
 
@@ -29,7 +47,12 @@
 					<td>Comprovante</td>
 					<td>Relatório</td>
 				</tr>
-		<?php while($ver=mysqli_fetch_row($result)): ?>
+		
+				
+		<?php
+		
+	
+		while($ver=mysqli_fetch_row($result)): ?>
 				<tr>
 					<td><?php echo $ver[0] ?></td>
 					<td><?php echo date("d/m/Y", strtotime($ver[1])) ?></td>
@@ -64,3 +87,4 @@
 	</div>
 	<div class="col-sm-1"></div>
 </div>
+

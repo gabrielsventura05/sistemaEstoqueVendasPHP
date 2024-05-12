@@ -13,6 +13,8 @@ require_once "../../classes/conexao.php";
 ?>
 
 
+
+
 <table class="table table-hover table-condensed table-bordered">
 	<caption><label>Fornecedores</label></caption>
 	<tr>
@@ -37,7 +39,7 @@ require_once "../../classes/conexao.php";
 		<td><?php echo $mostrar[6]; ?></td>
 		<td>
 			<span class="btn btn-warning btn-xs" data-toggle="modal" data-target="#abremodalFornecedoresUpdate" onclick="adicionarDado('<?php echo $mostrar[0]; ?>')">
-				<span class="glyphicon glyphicon-pencil"></span>
+				editar
 			</span>
 		</td>
 		<td>

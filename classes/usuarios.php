@@ -24,16 +24,19 @@ class usuarios{
 
 		//está criptografando o valor da senha que está no indice 1
 		$senha = sha1($dados[1]);
+		
+		
+		
+		//selciona do usuario o email e a senha que for igual ao email e senha digitados no formulario
+		//o campo email está sendo comparado com com o valor de email que está no indice 0 em login
+		$sql = "SELECT * FROM usuarios WHERE email = '$dados[0]'and senha = '$senha'";
 
 		//sessao serve para ver o tipo de usuario que está acessando e tambem o tempo que o usuario fica logado
 		$_SESSION['usuario'] = $dados[0];//no caso a session usuario está recebendo o valor do campo nome que está no idince 0
 		$_SESSION['iduser'] = self::trazerId($dados);//self indica que uma funcao está na mesma classe
-		
-	
-		//selciona do usuario o email e a senha que for igual ao email e senha digitados no formulario
-		//o campo email está sendo comparado com com o valor de email que está no indice 0 em login
-		$sql = "SELECT * FROM usuarios WHERE email = '$dados[0]' and senha = '$senha'";
 
+		
+		
 		//executa a conexao
 		$result = mysqli_query($conexao, $sql);
 
@@ -58,10 +61,19 @@ class usuarios{
 
 		//busca por id
 		$sql = "SELECT id FROM usuarios where email = '$dados[0]' and senha = '$senha'";
+		
+		$result= mysqli_query($conexao, $sql);
 
-		$result = mysqli_query($conexao, $sql);
+		 return mysqli_fetch_row($result)[0];
 
-		return mysqli_fetch_row($result)[0];//ele busca o que está no index 0
+		
+
+		
+
+		
+		
+		
+		//ele busca o que está no index 0
 	}
 
 	public function obterDados($idusuario){

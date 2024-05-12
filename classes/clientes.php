@@ -2,24 +2,79 @@
 
 class clientes{
 
-	public function adicionarCliente($dados){
+
+	public function registrarCliente($dados){
+
+		$c = new conectar();
+		//acessando o metodo conexao
+		$conexao = $c->conexao();
+
+		//recebe o formato da data
+		$data = date('Y-m-d');
+
+		$sql = "INSERT INTO clientes (nome, sobrenome, endereco, email, telefone, cpf) VALUES ('$dados[1]', '$dados[2], '$dados[3]', '$dados[4]', '$dados[5]', '$dados[6]' )";//a data está fora do array
+
+		return mysqli_query($conexao, $sql);
+
+
+	}
+
+	public function loginCliente($dados){
 
 		$c = new conectar();
 		$conexao = $c->conexao();
 
-		$sql = "INSERT INTO clientes (id_usuario, nome, sobrenome, endereco, email, telefone, 
-		cpf) VALUES ('$dados[0]', 
-		'$dados[1]', 
-		'$dados[2]',
-		'$dados[3]',
-		'$dados[4]',
-		'$dados[5]',
-		'$dados[6]')";
+		//está criptografando o valor da senha que está no indice 1
+		$senha = sha1($dados[1]);
+
+		//selciona do usuario o email e a senha que for igual ao email e senha digitados no formulario
+		//o campo email está sendo comparado com com o valor de email que está no indice 0 em login
+		$sql = "SELECT * FROM clientes WHERE email = '$dados[0]'and senha = '$senha'";
 
 
-		return mysqli_query($conexao, $sql);
+		//sessao serve para ver o tipo de usuario que está acessando e tambem o tempo que o usuario fica logado
+		$_SESSION['usuario2'] = $dados[0];//no caso a session usuario está recebendo o valor do campo nome que está no idince 0
+		$_SESSION['iduser2'] = self::trazerId($dados);//self indica que uma funcao está na mesma classe
+	
+		
+		
+		//executa a conexao
+		$result = mysqli_query($conexao, $sql);
+
+		//verifica se tem linha com as informacoes da consulta
+		if(mysqli_num_rows($result) > 0){
+
+			return 1;
+		} else {
+
+			return 0;
+		}
 
 	}
+		
+
+
+
+	public function trazerId($dados){
+
+		$c = new conectar();
+
+		$conexao = $c->conexao();
+
+		$senha = sha1($dados[1]);//sha serve para criptografar a senha
+
+		//busca por id
+		$sql = "SELECT id_cliente FROM clientes where email = '$dados[0]' and senha = '$senha'";
+		
+
+		$result = mysqli_query($conexao, $sql);
+		
+		
+		return mysqli_fetch_row($result)[0];//ele busca o que está no index 0
+	}
+
+	
+
 
 	public function obterDadosCliente($idcliente){ //pega os valores para serem editados nos campos
 		$c = new conectar();

@@ -36,6 +36,7 @@ if(isset($_SESSION['usuario'])){
 				<div class="col-sm-8">
 					<div id="tabelaFornecedoresLoad"></div>
 				</div>
+				
 			</div>
 		</div>
 
@@ -68,7 +69,7 @@ if(isset($_SESSION['usuario'])){
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button id="btnAdicionarFornecedorU" type="button" class="btn btn-primary" data-dismiss="modal">Atualizar</button>
+						<button id="btnAtualizarFornecedorU" type="button" class="btn btn-primary" data-dismiss="modal">Atualizar</button>
 
 					</div>
 				</div>
@@ -165,7 +166,7 @@ if(isset($_SESSION['usuario'])){
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('#btnAdicionarFornecedorU').click(function(){
+			$('#btnAtualizarFornecedorU').click(function(){
 				dados=$('#frmFornecedoresU').serialize();
 
 				$.ajax({

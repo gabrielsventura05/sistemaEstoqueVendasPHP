@@ -8,7 +8,7 @@ $obj = new conectar();
 $conexao = $obj->conexao();
 
 //verifica se existe um email com o valor 'admin' 
-$sql = "SELECT * FROM usuarios where email = 'admin'";
+$sql = "SELECT * FROM usuarios where email = 'administrador'";
 $result = mysqli_query($conexao, $sql);
 
 $validar = 0;

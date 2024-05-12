@@ -3,7 +3,7 @@
 	$obj = new conectar();
 	$conexao = $obj->conexao();
 
-	$sql = "SELECT * from usuarios where email='admin'";
+	$sql = "SELECT * from usuarios where user='administrador'";
 	$result = mysqli_query($conexao, $sql);
 
 	$validar = 0;
@@ -30,10 +30,10 @@
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4">
 				<div class="panel panel-primary">
-					<div class="panel panel-heading">Sistema</div>
+					<div class="panel panel-heading"><center>LOGIN</center></div>
 					<div class="panel panel-body">
 						<p>
-							<img src="img/vendas.jpg"  width="80%">
+							<img src="img/assessoria-financeira.jpg"  width="100%"><br><br>
 						</p>
 						<form id="frmLogin">
 							<label>Email</label>
@@ -41,13 +41,11 @@
 							<label>Senha</label>
 							<input type="password" name="senha" id="senha" class="form-control input-sm">
 							<p></p>
-							<button span class="btn btn-primary btn-sm" id="entrarSistema">Entrar</button>
-							<?php if(!$validar):?>
-							<a href="registrar.php" class="btn btn-danger btn-sm">Registrar</a>
+							<center><button span class="btn btn-success btn-sm" id="entrarSistema">Entrar
 
-							<?php 
-								endif;
-							 ?>
+							</button></center>
+							<br><br>
+							<p>Ainda não tem registro? <a href="registrar.php" >Clique aqui</a></p>
 							
 						</form>
 					</div>
@@ -56,7 +54,8 @@
 			<div class="col-sm-4"></div>
 		</div>
 	</div>
-</body>
+
+	</body>
 </html>
 
 <script type="text/javascript">
@@ -76,7 +75,7 @@
 			data:dados,
 			url:"procedimentos/login/login.php",
 			success:function(r){
-				//alert(r);
+			
 				if(r==1){
 					window.location="view/inicio.php";
 				}else{

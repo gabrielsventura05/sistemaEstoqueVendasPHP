@@ -1,9 +1,19 @@
 <?php 
 
+
+
+
+
 require_once "../../classes/conexao.php";
+
+
 	$c= new conectar();
 	$conexao=$c->conexao();
+
+			
+			
 ?>
+
 
 
 <h4>Vender Produto</h4>
@@ -188,3 +198,4 @@ require_once "../../classes/conexao.php";
 
 	});
 </script>
+

@@ -106,11 +106,11 @@ if(isset($_SESSION['usuario'])){
 			});
 		}
 
-		function eliminarCliente(idcliente){
+		function eliminarCliente(id_cliente){
 			alertify.confirm('Confirmação', 'Deseja Excluir este cliente?', function(){ 
 				$.ajax({
 					type:"POST",
-					data:"idcliente=" + idcliente,
+					data:"idcliente=" + id_cliente,
 					url:"../procedimentos/clientes/deletarCliente.php",
 					success:function(r){
 

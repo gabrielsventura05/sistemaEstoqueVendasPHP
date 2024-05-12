@@ -1,6 +1,28 @@
 <?php 
+
+include_once "../classes/conexao.php";
 	session_start();
-	if(isset($_SESSION['usuario'])){
+	if(isset($_SESSION['usuario']) || isset($_SESSION['iduser'])){
+
+		var_dump($_SESSION['usuario'], $_SESSION['iduser']);
+
+		
+			$sessao = $_SESSION['usuario'];//pega a variavel que esta em session, que nesse caso e o 
+			//email do usuario
+		
+							  $c= new conectar();
+								$conexao=$c->conexao();
+		
+								$sql="SELECT id,
+										nome,
+										user,
+										email
+									from usuarios where email ='$sessao'";//seleciona o usuario em que o email for igual
+									//ao que esta na sesssao
+								$result=mysqli_query($conexao, $sql);
+						
+
+	
 		
  ?>
 

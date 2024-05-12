@@ -1,5 +1,7 @@
 <?php 
 
+
+include_once "usuarios.php";
 class vendas{
 	public function obterDadosProduto($idproduto){
 		$c= new conectar();

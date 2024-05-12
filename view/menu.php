@@ -4,23 +4,22 @@ require_once "../classes/conexao.php";
 
 
 
-  if(isset($_SESSION['usuario'])) {
+  if(isset($_SESSION['usuario']) ) {
     $sessao = $_SESSION['usuario'];//pega a variavel que esta em session, que nesse caso e o 
 	//email do usuario
 
-$c= new conectar();
-	$conexao=$c->conexao();
+                      $c= new conectar();
+                        $conexao=$c->conexao();
 
-	$sql="SELECT id,
-					nome,
-					user,
-					email
-			from usuarios where email ='$sessao'";//seleciona o usuario em que o email for igual
-			//ao que esta na sesssao
-	$result=mysqli_query($conexao, $sql);
-	
-
-   
+                        $sql="SELECT id,
+                                nome,
+                                user,
+                                email
+                            from usuarios where email ='$sessao'";//seleciona o usuario em que o email for igual
+                            //ao que esta na sesssao
+                        $result=mysqli_query($conexao, $sql);
+                        
+                        
     ?>
 
     
@@ -52,35 +51,44 @@ $c= new conectar();
 </script>
 </head>
 <body>
-
+<?php while($mostrar = mysqli_fetch_row($result)): ?>
+            
 	 <div id="nav">
 	 	 <div class="navbar navbar-inverse navbar-fixed-top" data-spy="affix" data-offset-top="100">
 	 	 	<div class="container">
 	 	 		 <div class="navbar-header">
 
 	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
+  <p>asass</p>          
+  <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
           <!--<a class="navbar-brand" href="inicio.php"><img class="img-responsive logo img-thumbnail" src="../img/phpoo.png" alt="" width="100px" height="50px"></a>-->
           </div>
+          <ul class="nav navbar-nav navbar-left">
+             		<li class="active"><a href="inicio.php"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
+          </ul>
              <div id="navbar" class="collapse navbar-collapse">
              	<ul class="nav navbar-nav navbar-right">
-             		<li class="active"><a href="inicio.php"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
-
+             	
+          
+          
             
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt"></span>Gestão de produtos<span class="caret"></span></a>
-            <ul class="dropdown-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"  aria-expanded="false"><span class="glyphicon glyphicon-list-alt"></span>Gestão de produtos<span class="caret"></span></a>
+            <ul class="dropdown-menu" >
               <li><a href="categorias.php">Categorias</a></li>
               
               <li><a href="Produtos.php">Produtos</a></li>
               
             </ul>
           </li>
-
+          
+          <?php if( $mostrar[2] == "administrador"): ?>
+              
+           
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>Pessoas<span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -89,25 +97,27 @@ $c= new conectar();
               <li><a href="Fornecedores.php">Fornecedores</a></li>
             </ul>
           </li>
-
+          <?php endif; ?>
+         
 
           
           
           <li><a href="vendas.php"><span class="glyphicon glyphicon-usd"></span> Vendas</a></li>
-           
-          <?php while($mostrar = mysqli_fetch_row($result)): ?>
-           
+          
           <li class="dropdown" >                                                                                                                                                                                        
             <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> 
              <!--para mostrar o nome o usuario que entrou na sessao-->
             <?php echo $mostrar[1];?> <span class="caret"></span></a>
             <ul class="dropdown-menu">
          
-            <?php endwhile; ?>
             
-              <?php if($_SESSION['usuario'] == "admin"): ?>
+            <?php if( $mostrar[2] == "administrador"): ?>
+              
+              
                  <li> <a href="usuarios.php"><span class="glyphicon glyphicon-off"></span> Gestão de usuários</a></li>
-                <?php endif; ?>
+                 <?php endif; ?>
+               
+                
               
 
               <li> <a style="color: red" href="../procedimentos/sair.php"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
@@ -129,7 +139,7 @@ $c= new conectar();
 </html>
 
 
-
+<?php endwhile; ?>
 
 
 <?php
